@@ -2,6 +2,8 @@ const port    = (process.env.PORT || 3000),
       express = require( 'express' ),
       app     = express();
 
+app.use( express.static( 'public' ) );
+
 /********************
  * POSTS
  *******************/
