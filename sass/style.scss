@@ -1,5 +1,36 @@
 @import 'partials/typography';
 
-body{
+body {
     background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+
+    .navigation {
+        background-color: #ffffff;
+        width: 100%;
+        position: fixed;
+        box-shadow: 0 2px 2px -2px rgba( 0, 0, 0, 0.15 );
+
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+
+                li a {
+                    padding: 10px;
+                    //display: inline-block;
+                }
+            }
+        }
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 50px 20px;
+    }
 }

@@ -13,7 +13,6 @@ const gulp = require('gulp'),
 gulp.task('css', function() {
     return gulp.src('sass/**/*.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
@@ -32,7 +31,6 @@ gulp.task('js', function() {
         .pipe(sourcemaps.init())
         .pipe(gulp.dest('./public/js'))
         .pipe(uglify())
-        .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
         .pipe(rename({ suffix: '.min' }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./public/js'));

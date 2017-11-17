@@ -3,7 +3,7 @@ const express     = require( 'express' ),
       router      = express.Router(),
       MongoClient = require('mongodb').MongoClient,
       ObjectId    = require('mongodb').ObjectID,
-      uri         = process.env.DB;
+      uri         = (process.env.DB || "mongodb://sultenhest:MsCrg9JCQFVfUY1l@cluster0-shard-00-00-ihxot.mongodb.net:27017,cluster0-shard-00-01-ihxot.mongodb.net:27017,cluster0-shard-00-02-ihxot.mongodb.net:27017/MyFirstMongoDb?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin" );
 
 router.use( bodyParser.urlencoded( { extended: true } ) );
 
