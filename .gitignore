@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# Development code
+util
+util/*

@@ -3,7 +3,7 @@ const express     = require( 'express' ),
       router      = express.Router(),
       MongoClient = require('mongodb').MongoClient,
       ObjectId    = require('mongodb').ObjectID,
-      uri         = (process.env.DB);
+      uri         = ( process.env.DB || require('../util/mongourl.js') );
 
 router.use( bodyParser.urlencoded( { extended: true } ) );
 
