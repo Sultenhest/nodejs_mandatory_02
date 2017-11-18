@@ -1,36 +1,27 @@
+@import 'partials/variables';
+@import 'partials/mixins';
 @import 'partials/typography';
 
+@import 'partials/card';
+
 body {
-    background-color: #ffffff;
+    background-color: $thirdWhite;
     width: 100%;
     height: 100%;
 
-    .navigation {
-        background-color: #ffffff;
-        width: 100%;
-        position: fixed;
-        box-shadow: 0 2px 2px -2px rgba( 0, 0, 0, 0.15 );
-
-        nav {
-            max-width: 900px;
-            margin: 0 auto;
-
-            ul {
-                list-style-type: none;
-                padding: 0;
-                margin: 0;
-
-                li a {
-                    padding: 10px;
-                    //display: inline-block;
-                }
-            }
-        }
-    }
+    font-family: $fontFamily;
 
     .container {
         max-width: 900px;
-        margin: 0 auto;
-        padding: 50px 20px;
+        @include margin( 0, auto, 0, auto );
+        @include padding( 3, 1, 3, 1 );
+
+        #loader {
+            display: block;
+            width: 40px;
+            height: 40px;
+            @include margin( 0, auto, 0, auto );
+            padding: 2em;
+        }
     }
 }

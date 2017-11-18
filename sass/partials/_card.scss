@@ -1,0 +1,23 @@
+.card {
+    background-color: $secondWhite;
+    box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
+    border-radius: 2px;
+    @include margin( 0, 0, 1.5, 0 );
+
+    h1, h2, h3, h4, h5, h6, p {
+        @include marginPadding( 0, 0, 0, 0 );
+    }
+
+    .card-header {
+        background-color: $primaryWhite;
+        @include padding( 1.5, 1.5, 1.5, 1.5 );
+    }
+
+    .card-body {
+        @include padding( 1.5, 1.5, 1.5, 1.5 );
+    }
+
+    .card-footer {
+        @include padding( 1.5, 1.5, 1.5, 1.5 );
+    }
+}

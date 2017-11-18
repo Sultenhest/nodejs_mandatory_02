@@ -1,6 +1,41 @@
-*{
-    font-family: -apple-system, BlinkMacSystemFont, 
-        "Segoe UI", "Roboto", "Oxygen", 
-        "Ubuntu", "Cantarell", "Fira Sans", 
-        "Droid Sans", "Helvetica Neue", sans-serif;
+html, body{
+    @include font-size( $paragraphSize )
+    line-height: 1.5;
+    font-weight: normal;
+    -ms-text-size-adjust: 100%;;
+    -webkit-text-size-adjust: 100%;
+    color: rgba(0, 0, 0, 0.87);
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+h1 { @include font-size( $h1Size ) }
+h2 { @include font-size( $h2Size ) }
+h3 { @include font-size( $h3Size ) }
+h4 { @include font-size( $h4Size ) }
+h5 { @include font-size( $h5Size ) }
+h6 { @include font-size( $h6Size ) }
+
+a { text-decoration: none; }
+p { margin: 0 0 16px 0; }
+em { font-style: italic; }
+strong { font-weight: 500; }
+small { font-size: 75%; }
+.light { font-weight: 300; }
+.thin { font-weight: 200; }
+.secondary { color: rgba(0, 0, 0, 0.54); }
+.disabled { color: rgba(0, 0, 0, 0.38); }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize{ text-transform: capitalize; }

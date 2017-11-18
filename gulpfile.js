@@ -10,13 +10,11 @@ const gulp = require('gulp'),
       uglify = require('gulp-uglify');
 
 // Autocompile sass
-gulp.task('css', function() {
-    return gulp.src('sass/**/*.scss')
+gulp.task('sass', function() {
+    return gulp.src('sass/style.scss')
         .pipe(sourcemaps.init())
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer('last 2 version'))
         .pipe(gulp.dest('./public/css'))
         .pipe(cssnano())
         .pipe(rename({suffix: '.min'}))
@@ -38,7 +36,7 @@ gulp.task('js', function() {
 
 // Watch tasks (css & js) for changes
 gulp.task('watch', function() {
-    gulp.watch('sass/**/*.scss', ['css']);
+    gulp.watch('sass/**/*.scss', ['sass']);
     gulp.watch('javascript/**/*.js', ['js']);
 });
 
