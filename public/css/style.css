@@ -184,12 +184,6 @@ body {
     padding-top: 16px;
     padding-left: 1em;
     width: 100%; }
-    @media (min-width: 640px) {
-      body .container {
-        max-width: 608px; } }
-    @media (min-width: 1024px) {
-      body .container {
-        max-width: 992px; } }
     @media (min-width: 1170px) {
       body .container {
         max-width: 1138px; } }
