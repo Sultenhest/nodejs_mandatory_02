@@ -26,18 +26,36 @@ body {
         width: 100%;
 
         #search-form {
-            @include margin( 0, 0, 1.5, 0 );
+            @include margin( 1.5, 0, 1.5, 0 );
 
-            #search-field {
-                width: 100%;
-                border: 0;
-                outline: 0;
-                padding: 1em;
-                box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05);
+            .form-control {
+                display: flex;
                 border-radius: 2px;
+                box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
 
                 &:hover, &:active, &:focus {
                     box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.1);
+                }
+
+                #search-field {
+                    flex: 1;
+                    width: 100%;
+                    border: 0;
+                    outline: 0;
+                    padding: 1em;
+                }
+
+                .form-icon {
+                    width: 56px;
+                    height: 56px;
+                    background-color: $primaryWhite;
+                    cursor: pointer;
+
+                    .fa {
+                        line-height: 56px;
+                        text-align: center;
+                        display: block;
+                    }
                 }
             }
         }

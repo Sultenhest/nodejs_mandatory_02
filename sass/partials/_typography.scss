@@ -46,7 +46,7 @@ small { font-size: 75%; }
 .light { font-weight: 300; }
 .thin { font-weight: 200; }
 .secondary { color: rgba(0, 0, 0, 0.54); }
-.disabled { color: rgba(0, 0, 0, 0.38); }
+.disabled { color: rgba(0, 0, 0, 0.38); cursor: default !important; }
 
 .text-left { text-align: left; }
 .text-center { text-align: center; }

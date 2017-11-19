@@ -1,25 +1,39 @@
 (function( $ ) {
     'use strict';
-    
+
     $( document ).ready(function() {
-        var json;
+        var json = '';
 
         $.getJSON( $(location).attr('href') + 'posts/', function ( data ) {
             $( '#loader' ).parent().hide();
             json = data;
-            createDeck( data );
+            createDeck( json );
         } );
 
         $( '#search-field' ).keyup( function() {
+            $( '#clear-search-field' ).toggleClass( 'disabled' );
             $( '#frontPagePosts' ).empty();
 
+            $( '#clear-search-field' ).click( function() {
+                $( this ).addClass( 'disabled' );
+                $( '#search-field' ).val( '' );
+                createDeck( json );
+            } );
+
             var input = $( this ).val().toLowerCase();
-            
+
             json.forEach( function ( element ) {
                 if( element.title.toLowerCase().indexOf( input ) >= 0 ) {
                     $( '#frontPagePosts' ).append( card( element ) );
                 }
             } );
+
+            if( $( '#frontPagePosts' ).is(':empty') ) {
+                var element = new Object();
+                element.title = 'No results.';
+                element.body  = 'Sorry, but we couldn\'t find anything matching the search string \"' + input + '\".';
+                $( '#frontPagePosts' ).append( card( element ) );
+            }
         });
 
         function createDeck( data ) {
@@ -33,7 +47,9 @@
                 html += '<div class="card">';
                     html += '<div class="card-header">';
                         html += '<h3>' + element.title + '</h3>';
-                        html += '<p class="secondary">' + dateFromObjectId( element._id ) + '</p>';
+                        if( element._id != null ) {
+                            html += '<p class="secondary">' + dateFromObjectId( element._id ) + '</p>';
+                        }
                     html += '</div>';
 
                     html += '<div class="card-body">';
