@@ -17,6 +17,7 @@
             $( '#clear-search-field' ).click( function() {
                 $( this ).addClass( 'disabled' );
                 $( '#search-field' ).val( '' );
+                $( '#frontPagePosts' ).empty();
                 createDeck( json );
             } );
 
