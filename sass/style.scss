@@ -30,7 +30,8 @@ body {
 
             .form-control {
                 display: flex;
-                border-radius: 2px;
+                @include border-radius( 2px );
+                background-color: $primaryWhite;
                 box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
 
                 &:hover, &:active, &:focus {
@@ -46,16 +47,9 @@ body {
                 }
 
                 .form-icon {
-                    width: 56px;
-                    height: 56px;
-                    background-color: $primaryWhite;
                     cursor: pointer;
-
-                    .fa {
-                        line-height: 56px;
-                        text-align: center;
-                        display: block;
-                    }
+                    text-align: center;
+                    padding: 1em;
                 }
             }
         }
@@ -67,6 +61,27 @@ body {
             height: 40px;
             margin: 0 auto;
             padding: 1em;
+        }
+
+        .content {
+            display: flex;
+
+            @media (max-width: $md) {
+                display: block;
+            }
+
+            main {
+                flex-basis: 66%;
+                @include margin( 0, 1.5, 0, 0 );
+
+                @media (max-width: $md) {
+                    @include margin( 0, 0, 0, 0 );
+                }
+            }
+
+            aside {
+                flex-basis: 33%;
+            }
         }
     }
 }

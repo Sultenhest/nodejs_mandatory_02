@@ -16,11 +16,9 @@ html {
     }
 
     @include font-size( 1 )
-
     line-height: 1.5;
     font-weight: normal;
-    -ms-text-size-adjust: 100%;;
-    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
     color: rgba(0, 0, 0, 0.87);
 }
 

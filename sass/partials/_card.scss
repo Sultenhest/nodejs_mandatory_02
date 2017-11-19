@@ -1,7 +1,7 @@
 .card {
     background-color: $secondWhite;
     box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
-    border-radius: 2px;
+    @include border-radius( 2px );
     @include margin( 0, 0, 1.5, 0 );
 
     h1, h2, h3, h4, h5, h6, p {

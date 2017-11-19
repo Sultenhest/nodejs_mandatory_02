@@ -4,8 +4,7 @@ html {
   font-size: 1em;
   line-height: 1.5;
   font-weight: normal;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
   color: rgba(0, 0, 0, 0.87); }
   @media (min-width: 480px) {
     html {
@@ -208,6 +207,7 @@ body {
         display: -ms-flexbox;
         display: flex;
         border-radius: 2px;
+        background-color: #ffffff;
         -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
                 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
         body .container #search-form .form-control:hover, body .container #search-form .form-control:active, body .container #search-form .form-control:focus {
@@ -222,14 +222,9 @@ body {
           outline: 0;
           padding: 1em; }
         body .container #search-form .form-control .form-icon {
-          width: 56px;
-          height: 56px;
-          background-color: #ffffff;
-          cursor: pointer; }
-          body .container #search-form .form-control .form-icon .fa {
-            line-height: 56px;
-            text-align: center;
-            display: block; }
+          cursor: pointer;
+          text-align: center;
+          padding: 1em; }
     body .container #loader {
       -webkit-box-sizing: content-box;
               box-sizing: content-box;
@@ -238,3 +233,34 @@ body {
       height: 40px;
       margin: 0 auto;
       padding: 1em; }
+    body .container .content {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+      @media (max-width: 1024px) {
+        body .container .content {
+          display: block; } }
+      body .container .content main {
+        -ms-flex-preferred-size: 66%;
+            flex-basis: 66%;
+        margin-top: 0px;
+        margin-top: 0em;
+        margin-right: 24px;
+        margin-right: 1.5em;
+        margin-bottom: 0px;
+        margin-bottom: 0em;
+        margin-left: 0px;
+        margin-left: 0em; }
+        @media (max-width: 1024px) {
+          body .container .content main {
+            margin-top: 0px;
+            margin-top: 0em;
+            margin-right: 0px;
+            margin-right: 0em;
+            margin-bottom: 0px;
+            margin-bottom: 0em;
+            margin-left: 0px;
+            margin-left: 0em; } }
+      body .container .content aside {
+        -ms-flex-preferred-size: 33%;
+            flex-basis: 33%; }

@@ -5,8 +5,9 @@
         var json = '';
 
         $.getJSON( $(location).attr('href') + 'posts/', function ( data ) {
-            $( '#loader' ).parent().hide();
             json = data;
+            
+            $( '#loader' ).parent().hide();
             createDeck( json );
         } );
 

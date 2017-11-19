@@ -1,6 +1,13 @@
-@mixin font-size( $arg ) {
-    font-size: ($arg * 16) + px;
-    font-size: $arg + em;
+@mixin font-size( $size: 1 ) {
+    font-size: ( $size * 16 ) + px;
+    font-size: $size + em;
+}
+
+@mixin border-radius( $radius ) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
 }
 
 @mixin margin( $top, $right, $bottom, $left ) {
