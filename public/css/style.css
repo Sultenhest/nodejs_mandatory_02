@@ -153,7 +153,9 @@ body {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; }
   body .container {
-    max-width: 900px;
+    width: 900px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     margin-top: 0px;
     margin-top: 0em;
     margin-right: auto;
@@ -168,6 +170,9 @@ body {
     padding-bottom: 3em;
     padding-top: 16px;
     padding-left: 1em; }
+    @media (max-width: 768px) {
+      body .container {
+        width: 100%; } }
     body .container #loader {
       display: block;
       width: 40px;
