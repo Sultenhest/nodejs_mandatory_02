@@ -1,5 +1,18 @@
-html, body{
-    @include font-size( $paragraphSize )
+html {
+    @media (min-width: $sm) {
+        @include font-size( 2 )
+    }
+
+    @media (min-width: $md) {
+        @include font-size( 1.5 )
+    }
+
+    @media (min-width: $lg) {
+        @include font-size( 1 )
+    }
+
+    @include font-size( 1 )
+
     line-height: 1.5;
     font-weight: normal;
     -ms-text-size-adjust: 100%;;
