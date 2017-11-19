@@ -1,12 +1,26 @@
 (function( $ ) {
     'use strict';
-
+    
     $( document ).ready(function() {
+        var json;
 
         $.getJSON( $(location).attr('href') + 'posts/', function ( data ) {
             $( '#loader' ).parent().hide();
+            json = data;
             createDeck( data );
         } );
+
+        $( '#search-field' ).keyup( function() {
+            $( '#frontPagePosts' ).empty();
+
+            var input = $( this ).val().toLowerCase();
+            
+            json.forEach( function ( element ) {
+                if( element.title.toLowerCase().indexOf( input ) >= 0 ) {
+                    $( '#frontPagePosts' ).append( card( element ) );
+                }
+            } );
+        });
 
         function createDeck( data ) {
             data.forEach( function ( element ) {

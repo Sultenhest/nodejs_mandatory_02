@@ -1,12 +1,26 @@
 (function( $ ) {
     'use strict';
-
+    
     $( document ).ready(function() {
+        var json;
 
         $.getJSON( $(location).attr('href') + 'posts/', function ( data ) {
             $( '#loader' ).parent().hide();
+            json = data;
             createDeck( data );
         } );
+
+        $( '#search-field' ).keyup( function() {
+            $( '#frontPagePosts' ).empty();
+
+            var input = $( this ).val().toLowerCase();
+            
+            json.forEach( function ( element ) {
+                if( element.title.toLowerCase().indexOf( input ) >= 0 ) {
+                    $( '#frontPagePosts' ).append( card( element ) );
+                }
+            } );
+        });
 
         function createDeck( data ) {
             data.forEach( function ( element ) {
@@ -31,7 +45,6 @@
 
         function dateFromObjectId( objectId ) {
             var dateObject = new Date( parseInt( objectId.substring( 0, 8 ), 16 ) * 1000 );
-            //Fri Nov 17 2017 14:44:03 GMT+0100 (CET);
             var month = [ 'January', 'February', 'March', 'April', 'May', 'June', 
                           'July', 'August', 'September', 'October', 'November', 'December' ];
 
