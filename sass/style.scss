@@ -34,7 +34,7 @@ body {
             margin: 1.5rem 0;
 
             @media (max-width: $lg) {
-                margin: 0 0 1.5rem 0;
+                margin: 0 0 1rem 0;
             }
 
             .form-control {
@@ -82,6 +82,10 @@ body {
             main {
                 flex-basis: 66%;
                 margin: 0 1.5rem 0 0;
+
+                @media (max-width: $lg) {
+                    margin: 0 1rem 0 0;
+                }
 
                 @media (max-width: $md) {
                     margin: 0;
