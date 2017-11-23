@@ -24,10 +24,18 @@ body {
             max-width: $lg - 32px;
         }
 
+        @media (max-width: $lg) {
+            padding: 1rem;
+        }
+
         width: 100%;
 
         #search-form {
             margin: 1.5rem 0;
+
+            @media (max-width: $lg) {
+                margin: 0 0 1.5rem 0;
+            }
 
             .form-control {
                 display: flex;

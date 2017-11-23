@@ -128,8 +128,14 @@ body {
     @media (min-width: 1170px) {
       body .container {
         max-width: 1138px; } }
+    @media (max-width: 1170px) {
+      body .container {
+        padding: 1rem; } }
     body .container #search-form {
       margin: 1.5rem 0; }
+      @media (max-width: 1170px) {
+        body .container #search-form {
+          margin: 0 0 1.5rem 0; } }
       body .container #search-form .form-control {
         display: -webkit-box;
         display: -ms-flexbox;
