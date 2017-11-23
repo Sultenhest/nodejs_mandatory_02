@@ -12,7 +12,7 @@
         } );
 
         $( '#search-field' ).keyup( function() {
-            $( '#clear-search-field' ).toggleClass( 'disabled' );
+            $( '#clear-search-field' ).removeClass( 'disabled' );
             $( '#frontPagePosts' ).empty();
 
             $( '#clear-search-field' ).click( function() {
@@ -24,6 +24,10 @@
 
             var input = $( this ).val().toLowerCase();
 
+            if( input == '' ) {
+                $( '#clear-search-field' ).addClass( 'disabled' );
+            }
+
             json.forEach( function ( element ) {
                 if( element.title.toLowerCase().indexOf( input ) >= 0 ) {
                     $( '#frontPagePosts' ).append( card( element ) );
@@ -31,9 +35,10 @@
             } );
 
             if( $( '#frontPagePosts' ).is(':empty') ) {
-                var element = new Object();
-                element.title = 'No results.';
-                element.body  = 'Sorry, but we couldn\'t find anything matching the search string \"' + input + '\".';
+                var element = {
+                    title: 'No results.',
+                    body:  'Sorry, but we couldn\'t find anything matching the search string \"' + input + '\".'
+                };
                 $( '#frontPagePosts' ).append( card( element ) );
             }
         } );
@@ -46,7 +51,7 @@
     };
 
     function card( element ) {
-        var html = '<div class="card" data-id="' + element._id + '">';
+        var html = '<div class="card">';
                 html += '<div class="card-header">';
                     html += '<h3>' + element.title + '</h3>';
                     if( element._id != null ) {
