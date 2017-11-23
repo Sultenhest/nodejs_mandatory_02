@@ -30,7 +30,7 @@
 
             json.forEach( function ( element ) {
                 if( element.title.toLowerCase().indexOf( input ) >= 0 ) {
-                    $( '#frontPagePosts' ).append( card( element ) );
+                    $( '#frontPagePosts' ).append( card( element, 'fadeInUp' ) );
                 }
             } );
 
@@ -39,19 +39,19 @@
                     title: 'No results.',
                     body:  'Sorry, but we couldn\'t find anything matching the search string \"' + input + '\".'
                 };
-                $( '#frontPagePosts' ).append( card( element ) );
+                $( '#frontPagePosts' ).append( card( element, '' ) );
             }
         } );
     } );
 
     function createDeck( data ) {
         data.forEach( function ( element ) {
-            $( '#frontPagePosts' ).append( card( element ) );
+            $( '#frontPagePosts' ).append( card( element, 'fadeInUp' ) );
         } );
     };
 
-    function card( element ) {
-        var html = '<div class="card">';
+    function card( element, cardClass ) {
+        var html = '<div class="card ' + cardClass + '">';
                 html += '<div class="card-header">';
                     html += '<h3>' + element.title + '</h3>';
                     if( element._id != null ) {

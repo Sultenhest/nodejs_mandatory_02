@@ -4,7 +4,7 @@
     margin: 0 0 1.5rem 0;
     @include border-radius( 2px );
 
-    @media (max-width: $lg) {
+    @media ( max-width: $lg ) {
         margin: 0 0 1rem 0;
     }
 
