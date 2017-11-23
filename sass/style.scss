@@ -17,8 +17,8 @@ body {
     background-color: $thirdWhite;
 
     .container {
-        @include margin( 0, auto, 0, auto );
-        @include padding( 3, 1, 3, 1 );
+        margin: 0 auto;
+        padding: 3rem 1rem;
 
         @media (min-width: $lg) {
             max-width: $lg - 32px;
@@ -27,13 +27,13 @@ body {
         width: 100%;
 
         #search-form {
-            @include margin( 1.5, 0, 1.5, 0 );
+            margin: 1.5rem 0;
 
             .form-control {
                 display: flex;
-                @include border-radius( 2px );
                 background-color: $primaryWhite;
                 box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
+                @include border-radius( 2px );
 
                 &:hover, &:active, &:focus {
                     box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.1);
@@ -44,13 +44,13 @@ body {
                     width: 100%;
                     border: 0;
                     outline: 0;
-                    padding: 1em;
+                    padding: 1rem;
                 }
 
                 .form-icon {
                     cursor: pointer;
                     text-align: center;
-                    padding: 1em;
+                    padding: 1rem;
                 }
             }
         }
@@ -61,7 +61,7 @@ body {
             width: 40px;
             height: 40px;
             margin: 0 auto;
-            padding: 1em;
+            padding: 1rem;
         }
 
         .content {
@@ -73,10 +73,10 @@ body {
 
             main {
                 flex-basis: 66%;
-                @include margin( 0, 1.5, 0, 0 );
+                margin: 0 1.5rem 0 0;
 
                 @media (max-width: $md) {
-                    @include margin( 0, 0, 0, 0 );
+                    margin: 0;
                 }
             }
 
