@@ -1,10 +1,10 @@
 const gulp = require('gulp'),
+      rename = require('gulp-rename'),
+      sourcemaps = require('gulp-sourcemaps'),
 
       sass = require('gulp-sass'),
       autoprefixer = require('gulp-autoprefixer'),
       cssnano = require('gulp-cssnano'),
-      rename = require('gulp-rename'),
-      sourcemaps = require('gulp-sourcemaps'),
 
       concat = require('gulp-concat'),
       uglify = require('gulp-uglify');

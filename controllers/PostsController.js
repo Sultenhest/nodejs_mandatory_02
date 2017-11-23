@@ -13,6 +13,7 @@ router.get( '/', function ( req, res ) {
         var posts = db.collection('posts');
 
         posts.find().toArray(function ( err, result ) {
+            res.status( 200 );
             console.log( 'Returning all posts' );
             res.json( result );
         });
@@ -27,6 +28,7 @@ router.get( '/:id', function ( req, res ) {
         var posts = db.collection( 'posts' );
 
         posts.findOne( { '_id' : ObjectId( req.params.id ) }, function ( err, result ) {
+            res.status( 200 );
             console.log( 'Returning a post' );
             res.json( result );
         });

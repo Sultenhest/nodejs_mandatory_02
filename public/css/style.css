@@ -1,27 +1,17 @@
 @charset "UTF-8";
 html {
-  font-size: 16px;
-  font-size: 1em;
-  line-height: 1.5;
-  font-weight: normal;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   color: rgba(0, 0, 0, 0.87); }
-  @media (min-width: 480px) {
-    html {
-      font-size: 40px;
-      font-size: 2.5em; } }
-  @media (min-width: 640px) {
-    html {
-      font-size: 32px;
-      font-size: 2em; } }
-  @media (min-width: 1024px) {
-    html {
-      font-size: 24px;
-      font-size: 1.5em; } }
-  @media (min-width: 1170px) {
-    html {
-      font-size: 16px;
-      font-size: 1em; } }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
@@ -32,28 +22,22 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-weight: inherit; }
 
 h1 {
-  font-size: 64px;
-  font-size: 4em; }
+  font-size: 2.5rem; }
 
 h2 {
-  font-size: 48px;
-  font-size: 3em; }
+  font-size: 2rem; }
 
 h3 {
-  font-size: 32px;
-  font-size: 2em; }
+  font-size: 1.75rem; }
 
 h4 {
-  font-size: 24px;
-  font-size: 1.5em; }
+  font-size: 1.5rem; }
 
 h5 {
-  font-size: 16px;
-  font-size: 1em; }
+  font-size: 1.25rem; }
 
 h6 {
-  font-size: 12px;
-  font-size: 0.75em; }
+  font-size: 1rem; }
 
 a  {
   text-decoration: none; }
@@ -163,7 +147,9 @@ small {
     padding-top: 24px;
     padding-left: 1.5em; }
 
-* {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-transition: all 0.2s ease;
@@ -172,7 +158,6 @@ small {
 body {
   width: 100%;
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   background-color: #eeeff1; }
   body .container {
     margin-top: 0px;

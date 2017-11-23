@@ -1,23 +1,12 @@
 html {
-    @media (min-width: $xs) {
-        @include font-size( 2.5 )
-    }
+    line-height: 1.15;
+    text-size-adjust: 100%;
+}
 
-    @media (min-width: $sm) {
-        @include font-size( 2 )
-    }
-
-    @media (min-width: $md) {
-        @include font-size( 1.5 )
-    }
-
-    @media (min-width: $lg) {
-        @include font-size( 1 )
-    }
-
-    @include font-size( 1 )
-    line-height: 1.5;
-    font-weight: normal;
+body {
+    font-family: $fontFamily;
+    font-size: $fontBase;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     color: rgba(0, 0, 0, 0.87);
 }
@@ -29,12 +18,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
-h1 { @include font-size( $h1Size ) }
-h2 { @include font-size( $h2Size ) }
-h3 { @include font-size( $h3Size ) }
-h4 { @include font-size( $h4Size ) }
-h5 { @include font-size( $h5Size ) }
-h6 { @include font-size( $h6Size ) }
+h1 { font-size: $h1Size; }
+h2 { font-size: $h2Size; }
+h3 { font-size: $h3Size; }
+h4 { font-size: $h4Size; }
+h5 { font-size: $h5Size; }
+h6 { font-size: $h6Size; }
 
 a { text-decoration: none; }
 p { margin: 0 0 16px 0; }

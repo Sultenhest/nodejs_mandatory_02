@@ -1,9 +1,6 @@
 const express    = require( 'express' ),
-      bodyParser = require( 'body-parser' ),
       router     = express.Router(),
       path       = __dirname + '/public/views/';
-
-router.use( bodyParser.urlencoded( { extended: true } ) );
 
 //Frontpage
 router.get( '/', function ( req, res ) {
