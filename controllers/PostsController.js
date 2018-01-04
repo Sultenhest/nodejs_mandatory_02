@@ -1,6 +1,5 @@
 const express        = require( 'express' ),
-      //app            = express(),
-      app      = express.Router(),
+      app            = express.Router(), //express(),
       cors           = require( 'cors' ),
       bodyParser     = require( 'body-parser' ),
       methodOverride = require( 'method-override' ),
