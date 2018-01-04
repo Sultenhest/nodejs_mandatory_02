@@ -1,5 +1,5 @@
 const express = require( 'express' ),
-      app     = express(),
+      app     = express.Router(), //express(),
       path    = __dirname + '/public/views/';
 
 //Frontpage
