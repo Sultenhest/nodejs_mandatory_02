@@ -1,21 +1,36 @@
 .card {
+    position: relative;
     background-color: $secondWhite;
     box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
-    margin: 0 0 1.5rem 0;
     @include border-radius( 2px );
 
-    @media ( max-width: $lg ) {
-        margin: 0 0 1rem 0;
-    }
-
-    h1, h2, h3, h4, h5, h6, p {
+    h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, p:last-child {
         margin: 0;
         padding: 0;
+    }
+
+    &:hover, &:active, &:focus {
+        box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.1 );
+    }
+
+    .is-deck & {
+        margin: 0 0 1.5rem 0;
+
+        @media ( max-width: $lg ) {
+            margin: 0 0 1rem 0;
+        }
     }
 
     .card-header {
         background-color: $primaryWhite;
         padding: 1.5rem;
+
+        .fa {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            margin-top: -24px;
+        }
     }
 
     .card-body {

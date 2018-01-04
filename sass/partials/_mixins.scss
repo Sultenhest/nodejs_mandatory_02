@@ -4,3 +4,10 @@
         -ms-border-radius: $radius;
             border-radius: $radius;
 }
+
+@mixin background-color-hover( $color ) {
+    background-color: $color;
+    &:hover, &:active, &:focus {
+        background-color: lighten( $color, 5% );
+    }
+}

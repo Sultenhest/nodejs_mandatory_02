@@ -1,15 +1,19 @@
-const express     = require( 'express' ),
-      bodyParser  = require('body-parser'),
-      router      = express.Router(),
-      MongoClient = require('mongodb').MongoClient,
-      ObjectId    = require('mongodb').ObjectID,
-      uri         = ( process.env.DB || require('../util/mongourl.js') );
+const express        = require( 'express' ),
+      app            = express(),
+      cors           = require( 'cors' ),
+      bodyParser     = require( 'body-parser' ),
+      methodOverride = require( 'method-override' ),
+      mongoClient    = require( 'mongodb' ).MongoClient,
+      ObjectId       = require( 'mongodb' ).ObjectID,
+      uri            = ( process.env.DB || require( '../util/mongourl.js' ) );
 
-router.use( bodyParser.urlencoded( { extended: true } ) );
+app.use( cors() );
+app.use( bodyParser.urlencoded( { extended: true } ) );
+app.use( methodOverride('_method') );
 
 //Read all
-router.get( '/', function ( req, res ) {
-    MongoClient.connect(uri, function ( err, db ) {
+app.get( '/', function ( req, res ) {
+    mongoClient.connect(uri, function ( err, db ) {
         var posts = db.collection('posts');
 
         posts.find().toArray(function ( err, result ) {
@@ -23,13 +27,13 @@ router.get( '/', function ( req, res ) {
 });
 
 //Read one
-router.get( '/:id', function ( req, res ) {
-    MongoClient.connect( uri, function ( err, db ) {
+app.get( '/:id', function ( req, res ) {
+    mongoClient.connect( uri, function ( err, db ) {
         var posts = db.collection( 'posts' );
 
         posts.findOne( { '_id' : ObjectId( req.params.id ) }, function ( err, result ) {
             res.status( 200 );
-            console.log( 'Returning a post' );
+            console.log( 'Returning the post with id ' + ObjectId( req.params.id ) );
             res.json( result );
         });
 
@@ -38,47 +42,51 @@ router.get( '/:id', function ( req, res ) {
 });
 
 //Create
-router.post( '/', function ( req, res ) {
-    MongoClient.connect( uri, function ( err, db ) {
+app.post( '/', function ( req, res ) {
+    mongoClient.connect( uri, function ( err, db ) {
         var posts = db.collection( 'posts' );
 
         posts.insertOne(req.body, function ( err, result ) {
             res.status( 201 );
             console.log( 'Added a post' );
-            res.json();
         });
 
         db.close();
     });
-});
 
-//Delete
-router.delete( '/:id', function ( req, res ) {
-    MongoClient.connect( uri, function ( err, db ) {
-        var posts = db.collection( 'posts' );
-
-        posts.deleteOne( { '_id' : ObjectId( req.params.id ) }, function ( err, result ) {
-            res.status( 204 );
-            console.log( 'Deleted the post' );
-            res.json();
-        });
-
-        db.close();
-    });
+    res.redirect('/');
 });
 
 //Update
-router.put( '/:id', function ( req, res ) {
-    MongoClient.connect( uri, function ( err, db ) {
+app.put( '/:id', function ( req, res ) {
+    mongoClient.connect( uri, function ( err, db ) {
         var posts = db.collection( 'posts' );
 
         posts.updateOne( { '_id' : ObjectId( req.params.id ) }, { $set : req.body }, function( err, result ) {
-            res.status( 204 );
-            console.log( 'Updated the post' );
-            res.json();
+            res.status( 200 );
+            console.log( 'Updated the post with the id ' + ObjectId( req.params.id ) );
         });
+
         db.close();
     });
+
+    res.redirect('/');
 });
 
-module.exports = router;
+//Delete
+app.delete( '/:id', function ( req, res ) {
+    mongoClient.connect( uri, function ( err, db ) {
+        var posts = db.collection( 'posts' );
+
+        posts.deleteOne( { '_id' : ObjectId( req.params.id ) }, function ( err, result ) {
+            res.status( 200 );
+            console.log( 'Deleted the post with the id ' + ObjectId( req.params.id ) );
+        });
+
+        db.close();
+    });
+
+    res.redirect('/');
+});
+
+module.exports = app;

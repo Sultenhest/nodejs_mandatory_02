@@ -12,23 +12,25 @@
 </head>
 <body>
     <div id="container">
-        <form id="search-form" class="row">
-            <div class="col form-control has-icon">
-                <input type="text" name="search-field" id="search-field" class="control-field" placeholder="Search posts..." value="">
-
-                <span id="clear-search-field" class="form-icon disabled">
-                    <i class="fa fa-times fa-lg" aria-hidden="true"></i>
-                </span>
-            </div>
-        </form>
-
         <div class="row">
             <main class="col-66">
                 <div class="card">
-                    <img src="imgs/loader.gif" alt="Loading..." id="loader">
-                </div>
+                    <div class="card-header">
+                        <h3>About</h3>
+                        <p class="secondary">You could add some text here..</p>
+                    </div>
 
-                <div id="frontPagePosts" class="is-deck"></div>
+                    <div class="card-body">
+                        <p>Section</p>
+                        <p>This is the about page.</p>
+                    </div>
+
+                    <div class="card-footer">
+                        <a class="btn btn-primary">Primary</a>
+                        <a class="btn btn-success">Success</a>
+                        <a class="btn btn-danger">Danger</a>
+                    </div>
+                </div>
             </main>
 
             <aside class="col-33 is-deck">
@@ -45,13 +47,13 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Menu</h3>
+                        <h3>Sidebar 2</h3>
                     </div>
 
                     <div class="card-body">
                         <ul>
-                            <li><a class="disabled">Home</a></li>
-                            <li><a href="/about">About</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a class="disabled">About</a></li>
                             <li><a href="/contact">Contact</a></li>
                         </ul>
                     </div>

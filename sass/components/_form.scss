@@ -1,0 +1,41 @@
+.form-control {
+    background-color: $primaryWhite;
+    box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
+    @include border-radius( 2px );
+    border-color: transparent;
+    margin: 1.5rem 0;
+
+    &:hover, &:active, &:focus {
+        box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.1 );
+    }
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    @media ( max-width: $lg ) {
+        margin: 0 0 1rem 0;
+    }
+
+    .control-field {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 1rem;
+        line-height: 1.5;
+    }
+    
+    &.has-icon {
+        display: flex;
+        
+        .control-field {
+            flex: 1;
+        }
+    }
+
+    .form-icon {
+        cursor: pointer;
+        text-align: center;
+        padding: 1rem;
+    }
+}

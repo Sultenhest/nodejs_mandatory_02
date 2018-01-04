@@ -1,0 +1,89 @@
+#container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+
+    @media ( min-width: $lg ) {
+        max-width: $lg - 32px;
+    }
+
+    @media (max-width: $lg) {
+        padding: 1rem;
+    }
+
+    .row {
+        display: flex;
+        margin: 0 0 1.5rem 0;
+
+        @media ( max-width: $md ) {
+            display: block;
+            margin: 0 0 1rem 0;
+        }
+
+        &.center {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .col {
+            flex: 1;
+            margin: 0 1.5rem 0 0;
+
+            &:last-child {
+                margin: 0;
+            }
+
+            @media ( max-width: $md ) {
+                flex-basis: 100% !important;
+                width: 100% !important;
+                max-width: 100% !important;
+
+                &:not(:last-child) {
+                    margin: 0 0 1rem 0;
+                }
+            }
+        }
+
+        .col-100 {
+            @extend .col;
+            flex-basis: 100%;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .col-75 {
+            @extend .col;
+            flex-basis: 75%;
+            width: 75%;
+            max-width: 75%;
+        }
+
+        .col-66 {
+            @extend .col;
+            flex-basis: 66%;
+            width: 66%;
+            max-width: 66%;
+        }
+
+        .col-50 {
+            @extend .col;
+            flex-basis: 50%;
+            width: 50%;
+            max-width: 50%;
+        }
+
+        .col-33 {
+            @extend .col;
+            flex-basis: 33%;
+            width: 33%;
+            max-width: 33%;
+        }
+
+        .col-25 {
+            @extend .col;
+            flex-basis: 25%;
+            width: 25%;
+            max-width: 25%;
+        }
+    }
+}

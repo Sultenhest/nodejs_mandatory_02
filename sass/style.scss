@@ -3,7 +3,10 @@
 @import 'partials/typography';
 @import 'partials/animations';
 
+@import 'components/button';
 @import 'components/card';
+@import 'components/form';
+@import 'components/grid';
 
 @charset 'utf-8';
 
@@ -16,90 +19,39 @@
     animation-fill-mode: both;
 }
 
+#loader {
+    box-sizing: content-box;
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
 body {
     width: 100%;
     height: 100%;
     background-color: $thirdWhite;
 
-    .container {
-        margin: 0 auto;
-        padding: 3rem 1rem;
-
-        @media ( min-width: $lg ) {
-            max-width: $lg - 32px;
-        }
-
-        @media (max-width: $lg) {
-            padding: 1rem;
-        }
-
+    #overlay {
         width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        background-color: rgba( 0, 0, 0, 0.75 );
 
-        #search-form {
-            margin: 1.5rem 0;
-
-            @media ( max-width: $lg ) {
-                margin: 0 0 1rem 0;
-            }
-
-            .form-control {
-                display: flex;
-                background-color: $primaryWhite;
-                box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
-                @include border-radius( 2px );
-
-                &:hover, &:active, &:focus {
-                    box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.1 );
-                }
-
-                #search-field {
-                    flex: 1;
-                    width: 100%;
-                    border: 0;
-                    outline: 0;
-                    padding: 1rem;
-                }
-
-                .form-icon {
-                    cursor: pointer;
-                    text-align: center;
-                    padding: 1rem;
-                }
-            }
-        }
-
-        #loader {
-            box-sizing: content-box;
-            display: block;
-            width: 40px;
-            height: 40px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
-        .content {
+        #overlay-container {
+            width: 100%;
+            height: 100%;
             display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-            @media ( max-width: $md ) {
-                display: block;
-            }
-
-            main {
-                flex-basis: 66%;
-                margin: 0 1.5rem 0 0;
-
-                @media ( max-width: $lg ) {
-                    margin: 0 1rem 0 0;
-                }
-
-                @media ( max-width: $md ) {
-                    margin: 0;
-                }
-            }
-
-            aside {
-                flex-basis: 33%;
-            }
+        .card {
+            width: 500px;
         }
     }
 }

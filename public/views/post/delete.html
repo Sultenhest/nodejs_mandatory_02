@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Node.js</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/style.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div class="row">
+            <main class="col-66">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Delete Post</h3>
+                        <p class="secondary">Are you sure you want to delete the following post?</p>
+                    </div>
+
+                    <div id="card-delete" class="card-body">
+                        <img src="imgs/loader.gif" alt="Loading..." id="loader">
+                        
+                        <h3 id="title"></h3>
+                        <p id="body"></p>
+                    </div>
+
+                    <div class="card-footer">
+                        <form id="delete-form" method="POST" action="">
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="col-33 is-deck">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Sidebar</h3>
+                        <p class="secondary">You could add some text here..</p>
+                    </div>
+
+                    <div class="card-body">
+                        <p>This is the sidebar.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Sidebar 2</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div id="overlay"><div id="overlay-container"></div></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/javascript.min.js"></script>
+    <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+        $( document ).ready(function() {
+            $( '#delete-form' ).hide();
+            //https://stackoverflow.com/questions/17992578/how-to-get-the-base-path-in-jquery
+            var baseUrl = window.location.protocol + '//' + window.location.host;
+            var id = getUrlParameter('id');
+            $( '#delete-form' ).attr('action', '/posts/' + id + '?_method=delete');
+
+            $.getJSON( baseUrl + '/posts/' + id, function ( element ) {
+                $( '#loader' ).hide();
+                $( '#delete-form' ).show();
+                $( '#title' ).text( element.title );
+                $( '#body' ).text( element.body );
+            } );
+        });
+    </script>
+</body>
+</html>

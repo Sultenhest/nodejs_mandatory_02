@@ -41,4 +41,4 @@ gulp.task('watch', function() {
 });
 
 // Run 'gulp' in terminal to init watch task
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'sass', 'js']);

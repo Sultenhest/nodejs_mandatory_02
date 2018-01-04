@@ -1,11 +1,11 @@
-const port    = (process.env.PORT || 3000),
-      express = require( 'express' ),
-      app     = express();
+const express = require( 'express' ),
+      app     = express(),
+      port    = ( process.env.PORT || 3000 );
 
 app.use( express.static( 'public' ) );
 
 /********************
- * POSTS
+ * POSTS ROUTES
  *******************/
 var PostsController = require( './controllers/PostsController' );
 app.use( '/posts', PostsController );
