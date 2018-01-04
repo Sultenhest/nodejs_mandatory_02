@@ -70,8 +70,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../js/javascript.min.js"></script>
     <script>
-
-        console.log('before getUrlParameter');
         var getUrlParameter = function getUrlParameter(sParam) {
             var sPageURL = decodeURIComponent(window.location.search.substring(1)),
                 sURLVariables = sPageURL.split('&'),
@@ -87,17 +85,15 @@
             }
         };
 
-        console.log('before doc ready');
-
         $( document ).ready(function() {
             $( '#update-form' ).hide();
             //https://stackoverflow.com/questions/17992578/how-to-get-the-base-path-in-jquery
             var baseUrl = window.location.protocol + '//' + window.location.host;
             var id = getUrlParameter('id');
-            console.log(id)
             $( '#update-form' ).attr('action', '/posts/' + id + '?_method=put');
 
             $.getJSON( baseUrl + '/posts/' + id, function ( element ) {
+                console.log(element);
                 $( '#loader' ).hide();
                 $( '#update-form' ).show();
                 $( '#title' ).val( element.title );
