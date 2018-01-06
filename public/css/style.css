@@ -210,6 +210,8 @@ small {
   @media (max-width: 1170px) {
     .form-control {
       margin: 0 0 1rem 0; } }
+  .form-control textarea {
+    resize: none; }
   .form-control .control-field {
     width: 100%;
     border: 0;
