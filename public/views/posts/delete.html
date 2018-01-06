@@ -29,6 +29,7 @@
 
                     <div class="card-footer">
                         <form id="delete-form" method="POST" action="">
+                            <a href="/" class="btn btn-primary">Go Back</a>
                             <input type="submit" class="btn btn-danger" value="Delete">
                         </form>
                     </div>
@@ -65,8 +66,8 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../js/javascript.min.js"></script>
     <script>
+        //https://stackoverflow.com/questions/17992578/how-to-get-the-base-path-in-jquery
         var getUrlParameter = function getUrlParameter(sParam) {
             var sPageURL = decodeURIComponent(window.location.search.substring(1)),
                 sURLVariables = sPageURL.split('&'),
@@ -83,10 +84,10 @@
         };
 
         $( document ).ready(function() {
-            $( '#delete-form' ).hide();
-            //https://stackoverflow.com/questions/17992578/how-to-get-the-base-path-in-jquery
             var baseUrl = window.location.protocol + '//' + window.location.host;
             var id = getUrlParameter('id');
+
+            $( '#delete-form' ).hide();
             $( '#delete-form' ).attr('action', '/posts/' + id + '?_method=delete');
 
             $.getJSON( baseUrl + '/posts/' + id, function ( element ) {

@@ -5,7 +5,7 @@ const express = require( 'express' ),
 app.use( express.static( 'public' ) );
 
 /********************
- * POSTS ROUTES
+ * API POST ROUTES
  *******************/
 var PostsController = require( './controllers/PostsController' );
 app.use( '/posts', PostsController );

@@ -1,39 +1,45 @@
 const express = require( 'express' ),
-      app     = express.Router(), //express(),
+      app     = express.Router(),
       path    = __dirname + '/public/views/';
 
-//Frontpage
+/********************
+ * STATIC PAGES
+ *******************/
 app.get( '/', function ( req, res ) {
     res.sendFile( path + 'index.html' );
 });
 
-//About
 app.get( '/about', function ( req, res ) {
     res.sendFile( path + 'about.html' );
 });
 
-//Contact
 app.get( '/contact', function ( req, res ) {
     res.sendFile( path + 'contact.html' );
 });
 
-//Create Post
+/********************
+ * POST PAGE ROUTES
+ *******************/
 app.get( '/addpost', function ( req, res ) {
-    res.sendFile( path + 'post/create.html' );
+    res.sendFile( path + 'posts/create.html' );
 });
 
-//Create Post
 app.get( '/updatepost', function ( req, res ) {
-    res.sendFile( path + 'post/update.html' );
+    res.sendFile( path + 'posts/update.html' );
 });
 
-//Delete Post
 app.get( '/removepost', function ( req, res ) {
-    res.sendFile( path + 'post/delete.html' );
+    res.sendFile( path + 'posts/delete.html' );
 });
 
-//404
-app.get( '/*', function ( req, res ) {
+/********************
+ * ERROR ROUTES
+ *******************/
+ app.get( '/*', function ( req, res ) {
+    res.sendFile( path + 'error.html' );
+});
+
+app.get( '/*/*', function ( req, res ) {
     res.sendFile( path + 'error.html' );
 });
 
