@@ -145,7 +145,8 @@ small {
     background-color: #fcfcfd; }
   .btn:hover, .btn:active, .btn:focus {
     -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); }
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    text-decoration: none; }
   .btn:last-child {
     margin: 0; }
   .btn.btn-primary {
