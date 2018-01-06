@@ -40,8 +40,15 @@ h5 {
 h6 {
   font-size: 1rem; }
 
-a  {
+a {
+  color: rgba(0, 0, 0, 0.87);
   text-decoration: none; }
+  a:hover, a:active, a:focus {
+    color: rgba(0, 0, 0, 0.54);
+    text-decoration: underline; }
+  a.disabled {
+    color: rgba(0, 0, 0, 0.38);
+    text-decoration: none; }
 
 p {
   margin: 0 0 1rem 0; }
@@ -120,13 +127,18 @@ small {
           animation-name: fadeInUp; }
 
 .btn {
-  color: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   padding: 0.5rem 1rem;
   margin: 0 0.5rem 0 0;
   border: transparent;
   cursor: pointer;
+  display: inline-block;
+  line-height: 1.5;
+  vertical-align: middle;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   border-radius: 2px;
   background-color: #eeeff1; }
   .btn:hover, .btn:active, .btn:focus {
@@ -137,15 +149,18 @@ small {
   .btn:last-child {
     margin: 0; }
   .btn.btn-primary {
-    background-color: #3498db; }
+    background-color: #3498db;
+    color: #ffffff; }
     .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
       background-color: #4aa3df; }
   .btn.btn-success {
-    background-color: #2ecc71; }
+    background-color: #2ecc71;
+    color: #ffffff; }
     .btn.btn-success:hover, .btn.btn-success:active, .btn.btn-success:focus {
       background-color: #40d47e; }
   .btn.btn-danger {
-    background-color: #e74c3c; }
+    background-color: #e74c3c;
+    color: #ffffff; }
     .btn.btn-danger:hover, .btn.btn-danger:active, .btn.btn-danger:focus {
       background-color: #ea6153; }
 
@@ -284,6 +299,11 @@ small {
           flex-basis: 25%;
       width: 25%;
       max-width: 25%; }
+
+ol, ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
 
 *,
 *::before,

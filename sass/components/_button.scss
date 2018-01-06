@@ -1,10 +1,14 @@
 .btn {
-    color: $primaryWhite;
+    color: $primaryDark;
     box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
     padding: 0.5rem 1rem;
     margin: 0 0.5rem 0 0;
     border: transparent;
     cursor: pointer;
+    display: inline-block;
+    line-height: 1.5;
+    vertical-align: middle;
+    transition: all 0.5s;
     @include border-radius( 2px );
     @include background-color-hover( $thirdWhite );
 
@@ -18,13 +22,16 @@
 
     &.btn-primary {
         @include background-color-hover( $primaryColor );
+        color: $primaryWhite;
     }
 
     &.btn-success {
         @include background-color-hover( $successColor );
+        color: $primaryWhite;
     }
 
     &.btn-danger {
         @include background-color-hover( $dangerColor );
+        color: $primaryWhite;
     }
 }
