@@ -26,9 +26,9 @@
     function cardNoBody( element) {
         var html = '<div class="card fadeInUp pointer" data-id="' + element._id + '">';
                 html += '<div class="card-header">';
+                    html += '<i class="fa fa-angle-right fa-3x" aria-hidden="true"></i>';
                     html += '<h3>' + element.title + '</h3>';
                     html += '<p class="secondary">' + dateFromObjectId( element._id ) + '</p>';
-                    html += '<i class="fa fa-angle-right fa-3x" aria-hidden="true"></i>';
                 html += '</div>';
             html += '</div>';
         return html;

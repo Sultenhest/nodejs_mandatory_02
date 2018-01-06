@@ -3,90 +3,101 @@ const express        = require( 'express' ),
       cors           = require( 'cors' ),
       bodyParser     = require( 'body-parser' ),
       methodOverride = require( 'method-override' ),
-      mongoClient    = require( 'mongodb' ).MongoClient,
-      ObjectId       = require( 'mongodb' ).ObjectID,
-      uri            = ( process.env.DB || require( '../util/mongourl.js' ) );
+      Post           = require( '../models/Post' );
 
 app.use( cors() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
-app.use( methodOverride('_method') );
+app.use( methodOverride( '_method' ) );
 
 //Read all
 app.get( '/', function ( req, res ) {
-    mongoClient.connect(uri, function ( err, db ) {
-        var posts = db.collection('posts');
+    Post.find( function ( err, posts ) {
+        if ( err ) {
+            console.log( 'There was a problem finding the posts.' );
+            return res.status( 500 );
+        }
 
-        posts.find().toArray(function ( err, result ) {
-            res.status( 200 );
-            console.log( 'Returning all posts' );
-            res.json( result );
-        });
-
-        db.close();
-    });
-});
+        res.status( 200 );
+        console.log( 'Returning all posts' );
+        res.json( posts );
+    } );
+} );
 
 //Read one
-app.get( '/:id', function ( req, res ) {
-    mongoClient.connect( uri, function ( err, db ) {
-        var posts = db.collection( 'posts' );
+app.get( '/:id' , function ( req, res ) {
+    Post.findById( req.params.id, function ( err, post ) {
+        if ( err ) {
+            console.log( 'There was a problem finding the post.' );
+            return res.status( 500 );
+        }
 
-        posts.findOne( { '_id' : ObjectId( req.params.id ) }, function ( err, result ) {
-            res.status( 200 );
-            console.log( 'Returning the post with id ' + ObjectId( req.params.id ) );
-            res.json( result );
-        });
+        if ( !post ) {
+            console.log( 'Could not find a post with the id ' + req.params.id );
+            return res.status( 404 );
+        }
 
-        db.close();
+        res.status( 200 );
+        console.log( 'Returning the post with id ' + req.params.id );
+        res.json( post );
     });
 });
 
 //Create
-app.post( '/', function ( req, res ) {
-    mongoClient.connect( uri, function ( err, db ) {
-        var posts = db.collection( 'posts' );
+app.post('/', function ( req, res ) {
+    Post.create( {
+        title: req.body.title,
+        body:  req.body.body
+    }, function ( err, post ) {
+            if ( err ) {
+                console.log( 'There was a problem adding the post to the database.' );
+                return res.status( 500 );
+            }
 
-        posts.insertOne(req.body, function ( err, result ) {
             res.status( 201 );
             console.log( 'Added a post' );
-        });
+    } );
 
-        db.close();
-    });
-
-    res.redirect('/');
-});
+    res.redirect( '/' );
+} );
 
 //Update
-app.put( '/:id', function ( req, res ) {
-    mongoClient.connect( uri, function ( err, db ) {
-        var posts = db.collection( 'posts' );
+app.put( '/:id', function ( req, res ) { 
+    Post.findByIdAndUpdate( req.params.id, req.body, { new: true }, function ( err, post ) {
+        if ( err ) {
+            console.log( 'There was a problem updating the post.' );
+            return res.status( 500 );
+        }
+        
+        if ( !post ) {
+            console.log( 'Could not find a post with the id ' + req.params.id );
+            return res.status( 404 );
+        }
 
-        posts.updateOne( { '_id' : ObjectId( req.params.id ) }, { $set : req.body }, function( err, result ) {
-            res.status( 200 );
-            console.log( 'Updated the post with the id ' + ObjectId( req.params.id ) );
-        });
-
-        db.close();
+        res.status( 200 );
+        console.log( 'Updated the post' );
     });
 
-    res.redirect('/');
-});
+    res.redirect( '/' );
+} );
 
 //Delete
 app.delete( '/:id', function ( req, res ) {
-    mongoClient.connect( uri, function ( err, db ) {
-        var posts = db.collection( 'posts' );
+    Post.findByIdAndRemove( req.params.id, function ( err, post ) {
+        if ( err ) {
+            console.log( 'There was a problem deleting the post.' );
+            return res.status( 500 );
+        }
 
-        posts.deleteOne( { '_id' : ObjectId( req.params.id ) }, function ( err, result ) {
-            res.status( 200 );
-            console.log( 'Deleted the post with the id ' + ObjectId( req.params.id ) );
-        });
+        if ( !post ) {
+            console.log( 'Could not find a post with the id ' + req.params.id );
+            return res.status( 404 );
+        }
 
-        db.close();
-    });
+        res.status( 200 );
+        console.log( 'Deleted the post with the id ' + post._id );
+    } );
 
-    res.redirect('/');
-});
+    res.redirect( '/' );
+} );
 
 module.exports = app;
