@@ -20,16 +20,8 @@ app.get( '/contact', function ( req, res ) {
 /********************
  * POST PAGE ROUTES
  *******************/
-app.get( '/addpost', function ( req, res ) {
-    res.sendFile( path + 'posts/create.html' );
-});
-
-app.get( '/updatepost', function ( req, res ) {
-    res.sendFile( path + 'posts/update.html' );
-});
-
-app.get( '/removepost', function ( req, res ) {
-    res.sendFile( path + 'posts/delete.html' );
+app.get( '/form', function ( req, res ) {
+    res.sendFile( path + 'posts/form.html' );
 });
 
 /********************

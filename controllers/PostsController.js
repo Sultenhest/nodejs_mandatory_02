@@ -5,12 +5,12 @@ const express        = require( 'express' ),
       methodOverride = require( 'method-override' ),
       Post           = require( '../models/Post' );
 
-app.use( cors() );
+//app.use( cors() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( methodOverride( '_method' ) );
 
 //Read all
-app.get( '/', function ( req, res ) {
+app.get( '/', cors(), function ( req, res ) {
     Post.find( function ( err, posts ) {
         if ( err ) {
             console.log( 'There was a problem finding the posts.' );

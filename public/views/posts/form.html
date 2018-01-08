@@ -16,7 +16,7 @@
             <main class="col-66">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Update Post</h3>
+                        <h3 id="form-header">Post</h3>
                         <p class="secondary">You could add some text here..</p>
                     </div>
 
@@ -33,7 +33,7 @@
                             </div>
 
                             <a href="/" class="btn btn-primary">Go Back</a>
-                            <input type="submit" class="btn btn-success" value="Update">
+                            <input type="submit" id="submit" class="btn btn-success" value="Submit">
                         </form>
                     </div>
                 </div>
@@ -72,27 +72,40 @@
     <script src="../js/javascript.min.js"></script>
     <script>
         $( document ).ready(function() {
-            var baseUrl = window.location.protocol + '//' + window.location.host;
-            var id = getUrlParameter('id');
+            var baseUrl = window.location.protocol + '//' + window.location.host,
+                id      = getUrlParameter( 'id' ),
+                type    = getUrlParameter( 'type' );
             
             $( '#form' ).hide();
 
-            $( '#form' ).attr('action', '/posts/' + id + '?_method=put');
-            $( '#form' ).attr('action', '/posts/' + id + '?_method=delete');
+            if ( type === 'update' ) {
+                $( '#form-header' ).prepend( 'Update ' );
+                $( '#form' ).attr('action', '/posts/' + id + '?_method=put');
+            } else if ( type === 'delete' ) {
+                $( '#form-header' ).prepend( 'Delete ' );
+                $( '#form' ).attr('action', '/posts/' + id + '?_method=delete');
+            } else {
+                $( '#form-header' ).prepend( 'Create ' );
+                $( '#form' ).attr('action', '/posts');
+            }
 
-            $.getJSON( baseUrl + '/posts/' + id, function ( element ) {
-                $( '#loader' ).hide();
-                $( '#form' ).show();
+            if ( id != null ) {
+                $.getJSON( baseUrl + '/posts/' + id, function ( element ) {
+                    $( '#title' ).val( element.title );
+                    $( '#body' ).val( element.body );
 
-                //update
-                $( '#title' ).val( element.title );
-                $( '#body' ).val( element.body );
+                    if ( type === 'update' ) {
+                        $( '#submit' ).attr( 'value', 'Edit' );
+                    } else if ( type === 'delete' ) {
+                        $( '#title, #body' ).prop( 'disabled', true );
+                        $( '#submit' ).removeClass( 'btn-success' ).addClass( 'btn-danger' ).attr( 'value', 'Delete' );
+                    }
+                } );
+            }
 
-                //delete
-                $( '#title' ).text( element.title );
-                $( '#body' ).text( element.body );
-            } );
-        });
+            $( '#loader' ).hide();
+            $( '#form' ).show();
+        } );
     </script>
 </body>
 </html>

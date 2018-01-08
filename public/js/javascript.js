@@ -45,8 +45,8 @@ function cardWithBody( element ) {
 
         if( element._id != null ) {
             html += '<div class="card-footer">';
-                html += '<a href="/updatepost?id=' + element._id + '" class="btn btn-success">Edit</a>';
-                html += '<a href="/removepost?id=' + element._id + '" class="btn btn-danger">Delete</a>';
+                html += '<a href="/form?id=' + element._id + '&type=update" class="btn btn-success">Edit</a>';
+                html += '<a href="/form?id=' + element._id + '&type=delete" class="btn btn-danger">Delete</a>';
             html += '</div>';
         }
     html += '</div>';
