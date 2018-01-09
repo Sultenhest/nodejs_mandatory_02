@@ -88,8 +88,7 @@ $( function() {
         }
 
         jsonData.forEach( function ( element ) {
-            if( element.title.toLowerCase().indexOf( searchInput ) >= 0 ||
-                element.body.toLowerCase().indexOf( searchInput )  >= 0 ) {
+            if ( element.title.toLowerCase().indexOf( searchInput ) >= 0 ) {
                 $( '#main-deck' ).append( cardNoBody( element ) );
             }
         } );

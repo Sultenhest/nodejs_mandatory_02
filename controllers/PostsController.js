@@ -1,15 +1,15 @@
 const express        = require( 'express' ),
-      app            = express.Router(),
+      router         = express.Router(),
       cors           = require( 'cors' ),
       bodyParser     = require( 'body-parser' ),
       methodOverride = require( 'method-override' ),
       Post           = require( '../models/Post' );
 
-app.use( bodyParser.urlencoded( { extended: true } ) );
-app.use( methodOverride( '_method' ) );
+router.use( bodyParser.urlencoded( { extended: true } ) );
+router.use( methodOverride( '_method' ) );
 
 //Read all
-app.get( '/', cors(), function ( req, res ) {
+router.get( '/', cors(), function ( req, res ) {
     Post.find( null, 'title', function ( err, posts ) {
         if ( err ) {
             console.log( 'There was a problem finding the posts.' );
@@ -23,7 +23,7 @@ app.get( '/', cors(), function ( req, res ) {
 } );
 
 //Read one
-app.get( '/:id', function ( req, res ) {
+router.get( '/:id', function ( req, res ) {
     Post.findById( req.params.id, function ( err, post ) {
         if ( err ) {
             console.log( 'There was a problem finding the post.' );
@@ -42,7 +42,7 @@ app.get( '/:id', function ( req, res ) {
 } );
 
 //Create
-app.post('/', function ( req, res ) {
+router.post('/', function ( req, res ) {
     Post.create( {
         title: req.body.title,
         body:  req.body.body
@@ -60,7 +60,7 @@ app.post('/', function ( req, res ) {
 } );
 
 //Update
-app.put( '/:id', function ( req, res ) { 
+router.put( '/:id', function ( req, res ) { 
     Post.findByIdAndUpdate( req.params.id, req.body, { new: true }, function ( err, post ) {
         if ( err ) {
             console.log( 'There was a problem updating the post.' );
@@ -80,7 +80,7 @@ app.put( '/:id', function ( req, res ) {
 } );
 
 //Delete
-app.delete( '/:id', function ( req, res ) {
+router.delete( '/:id', function ( req, res ) {
     Post.findByIdAndRemove( req.params.id, function ( err, post ) {
         if ( err ) {
             console.log( 'There was a problem deleting the post.' );
@@ -99,4 +99,4 @@ app.delete( '/:id', function ( req, res ) {
     res.redirect( '/' );
 } );
 
-module.exports = app;
+module.exports = router;
