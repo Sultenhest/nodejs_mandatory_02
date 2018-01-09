@@ -5,7 +5,6 @@ const express        = require( 'express' ),
       methodOverride = require( 'method-override' ),
       Post           = require( '../models/Post' );
 
-//app.use( cors() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( methodOverride( '_method' ) );
 

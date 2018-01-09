@@ -1,6 +1,6 @@
 function createDeck( data ) {
     data.forEach( function ( element ) {
-        $( '#frontPagePosts' ).append( cardNoBody( element ) );
+        $( '#main-deck' ).append( cardNoBody( element ) );
     } );
 };
 

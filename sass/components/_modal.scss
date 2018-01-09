@@ -1,0 +1,22 @@
+#modal-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    overflow: auto;
+    background-color: rgba( 0, 0, 0, 0.75 );
+
+    .modal-close {
+        color: $primaryWhite;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .modal {
+        width: 500px;
+        margin: 2rem auto;
+    }
+}

@@ -1,78 +1,101 @@
-(function( $ ) {
+$( function() {
     'use strict';
 
-    var jsonData = '';
+    var rootURL          = window.location.protocol + '//' + window.location.host,
+        pathName         = top.location.pathname,
+        jsonData         = '',
+        apiFailElement   = { 'title': 'Sorry, we did not find anything..',
+                             'body':  'Contact somebody if this keeps on happening..' },
+        fetchingElement  = { 'title': 'Fetching Data',
+                             'body':  '<img src="imgs/loader.gif" alt="Loading..." id="loader">' },
+        noResultsElement = { 'title': 'No results.',
+                             'body':  'Sorry, but we couldn\'t find anything matching the search string.<br>Press the X or type something else.' };
 
-    if ( top.location.pathname === '/' ) {
-        $.getJSON( $( location ).attr( 'href' ) + 'posts/', function ( data ) {
+    if ( pathName === '/' ) {
+        $.getJSON( rootURL + '/posts/', function ( data ) {
             jsonData = data;
-            $( '#loader' ).parent().hide();
             createDeck( jsonData );
         } ).fail( function() {
+            $( '#main-deck' ).append( cardWithBody( apiFailElement ) );
+        } ).always( function() {
             $( '#loader' ).parent().hide();
-            var element = {
-                title: 'Sorry, we did not find anything..',
-                body:  'Contact somebody if this keeps on happening..'
-            };
-
-            $( '#frontPagePosts' ).append( cardWithBody( element ) );
         } );
-    }
+    } else if ( pathName === '/form' ) {
+        var id   = getUrlParameter( 'id' ),
+            type = getUrlParameter( 'type' );
 
-    $( document ).ready(function() {
-        $( '#frontPagePosts' ).on( 'click', '.card', function () {
-            $( '#overlay-container' ).empty();
-            var postId = $( this ).attr( 'data-id' );
-            $( '#overlay' ).show();
+        $( '#form' ).hide();
 
-            var element = {
-                title: 'Fetching Data',
-                body:  '<img src="imgs/loader.gif" alt="Loading..." id="loader">'
-            };
-            $( '#overlay-container' ).append( cardWithBody( element ) );
+        if ( type === 'update' ) {
+            $( '#form-header' ).prepend( 'Update ' );
+            $( '#form' ).attr('action', '/posts/' + id + '?_method=put');
+        } else if ( type === 'delete' ) {
+            $( '#form-header' ).prepend( 'Delete ' );
+            $( '#form' ).attr('action', '/posts/' + id + '?_method=delete');
+        } else {
+            $( '#form-header' ).prepend( 'Create ' );
+            $( '#form' ).attr('action', '/posts');
+        }
 
-            $.getJSON( $(location).attr('href') + 'posts/' + postId, function ( data ) {
-                $( '#overlay-container' ).empty();
-                $( '#overlay-container' ).append( cardWithBody( data ) );
-            } );
-        } );
+        if ( id != null ) {
+            $.getJSON( rootURL + '/posts/' + id, function ( element ) {
+                $( '#title' ).val( element.title );
+                $( '#body' ).val( element.body );
 
-        $( '#overlay' ).click( function() {
-            $( '#overlay-container' ).empty();
-            $( this ).hide();
-        } );
-
-        $( '#search-field' ).keyup( function() {
-            $( '#clear-search-field' ).removeClass( 'disabled' );
-            $( '#frontPagePosts' ).empty();
-
-            $( '#clear-search-field' ).click( function() {
-                $( this ).addClass( 'disabled' );
-                $( '#search-field' ).val( '' );
-                $( '#frontPagePosts' ).empty();
-                createDeck( jsonData );
-            } );
-
-            var input = $( this ).val().toLowerCase();
-
-            if( input == '' ) {
-                $( '#clear-search-field' ).addClass( 'disabled' );
-            }
-
-            jsonData.forEach( function ( element ) {
-                if( element.title.toLowerCase().indexOf( input ) >= 0 ||
-                    element.body.toLowerCase().indexOf( input )  >= 0 ) {
-                    $( '#frontPagePosts' ).append( cardNoBody( element ) );
+                if ( type === 'update' ) {
+                    $( '#submit' ).attr( 'value', 'Edit' );
+                } else if ( type === 'delete' ) {
+                    $( '#title, #body' ).prop( 'disabled', true );
+                    $( '#submit' ).removeClass( 'btn-success' ).addClass( 'btn-danger' ).attr( 'value', 'Delete' );
                 }
             } );
+        }
 
-            if( $( '#frontPagePosts' ).is(':empty') ) {
-                var element = {
-                    title: 'No results.',
-                    body:  'Sorry, but we couldn\'t find anything matching the search string \"' + input + '\".'
-                };
-                $( '#frontPagePosts' ).append( cardWithBody( element ) );
-            }
+        $( '#loader' ).hide();
+        $( '#form' ).show();
+    }
+
+    $( '#main-deck' ).on( 'click', '.card', function () {
+        var postId  = $( this ).attr( 'data-id' );
+
+        $( '.modal' ).empty().append( cardWithBody( fetchingElement ) );
+        $( '#modal-overlay' ).show();
+
+        $.getJSON( rootURL + '/posts/' + postId, function ( data ) {
+            $( '.modal' ).empty().append( cardWithBody( data ) );
+        } );
+
+        $( '.modal-close' ).click( function() {
+            $( '#modal-overlay' ).hide();
         } );
     } );
-} )( jQuery );
+    
+    $( '#search-field' ).keyup( function() {
+        var searchInput = $( this ).val().toLowerCase();
+
+        $( '#clear-search-field' ).removeClass( 'disabled' );
+        $( '#main-deck' ).empty();
+
+        $( '#clear-search-field' ).click( function() {
+            $( this ).addClass( 'disabled' );
+            $( '#search-field' ).val( '' );
+            $( '#main-deck' ).empty();
+            createDeck( jsonData );
+        } );
+
+        if ( searchInput == '' ) {
+            $( '#clear-search-field' ).addClass( 'disabled' );
+        }
+
+        jsonData.forEach( function ( element ) {
+            if( element.title.toLowerCase().indexOf( searchInput ) >= 0 ||
+                element.body.toLowerCase().indexOf( searchInput )  >= 0 ) {
+                $( '#main-deck' ).append( cardNoBody( element ) );
+            }
+        } );
+
+        if ( $( '#main-deck' ).is( ':empty' ) ) {
+            $( '#main-deck' ).append( cardWithBody( noResultsElement ) );
+        }
+    } );
+} );
