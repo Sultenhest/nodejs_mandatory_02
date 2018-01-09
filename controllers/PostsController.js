@@ -10,7 +10,7 @@ app.use( methodOverride( '_method' ) );
 
 //Read all
 app.get( '/', cors(), function ( req, res ) {
-    Post.find( function ( err, posts ) {
+    Post.find( null, 'title', function ( err, posts ) {
         if ( err ) {
             console.log( 'There was a problem finding the posts.' );
             return res.status( 500 );

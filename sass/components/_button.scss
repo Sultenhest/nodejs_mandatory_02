@@ -35,4 +35,14 @@
         @include background-color-hover( $dangerColor );
         color: $primaryWhite;
     }
+
+    &.btn-full {
+        display: block;
+        text-align: center;
+        margin: 0 0 1rem 0;
+
+        &:last-child {
+            margin: 0;
+        } 
+    }
 }

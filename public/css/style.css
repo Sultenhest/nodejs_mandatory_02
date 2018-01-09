@@ -164,6 +164,12 @@ small {
     color: #ffffff; }
     .btn.btn-danger:hover, .btn.btn-danger:active, .btn.btn-danger:focus {
       background-color: #ea6153; }
+  .btn.btn-full {
+    display: block;
+    text-align: center;
+    margin: 0 0 1rem 0; }
+    .btn.btn-full:last-child {
+      margin: 0; }
 
 .card {
   position: relative;
@@ -179,7 +185,7 @@ small {
             box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); }
   .is-deck .card {
     margin: 0 0 1.5rem 0; }
-    @media (max-width: 1170px) {
+    @media (max-width: 1024px) {
       .is-deck .card {
         margin: 0 0 1rem 0; } }
   .card .card-image {
@@ -249,7 +255,7 @@ small {
     display: -ms-flexbox;
     display: flex;
     margin: 0 0 1.5rem 0; }
-    @media (max-width: 1024px) {
+    @media (max-width: 640px) {
       #container .row {
         display: block;
         margin: 0 0 1rem 0; } }
@@ -267,7 +273,7 @@ small {
       margin: 0 1.5rem 0 0; }
       #container .row .col:last-child, #container .row .col-100:last-child, #container .row .col-75:last-child, #container .row .col-66:last-child, #container .row .col-50:last-child, #container .row .col-33:last-child, #container .row .col-25:last-child {
         margin: 0; }
-      @media (max-width: 1024px) {
+      @media (max-width: 640px) {
         #container .row .col, #container .row .col-100, #container .row .col-75, #container .row .col-66, #container .row .col-50, #container .row .col-33, #container .row .col-25 {
           -ms-flex-preferred-size: 100% !important;
               flex-basis: 100% !important;
