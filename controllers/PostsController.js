@@ -23,7 +23,7 @@ app.get( '/', cors(), function ( req, res ) {
 } );
 
 //Read one
-app.get( '/:id' , function ( req, res ) {
+app.get( '/:id', function ( req, res ) {
     Post.findById( req.params.id, function ( err, post ) {
         if ( err ) {
             console.log( 'There was a problem finding the post.' );
@@ -38,8 +38,8 @@ app.get( '/:id' , function ( req, res ) {
         res.status( 200 );
         console.log( 'Returning the post with id ' + req.params.id );
         res.json( post );
-    });
-});
+    } );
+} );
 
 //Create
 app.post('/', function ( req, res ) {
@@ -74,7 +74,7 @@ app.put( '/:id', function ( req, res ) {
 
         res.status( 200 );
         console.log( 'Updated the post' );
-    });
+    } );
 
     res.redirect( '/' );
 } );
