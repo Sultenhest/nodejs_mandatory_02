@@ -47,13 +47,13 @@ router.post('/', function ( req, res ) {
         title: req.body.title,
         body:  req.body.body
     }, function ( err, post ) {
-            if ( err ) {
-                console.log( 'There was a problem adding the post to the database.' );
-                return res.status( 500 );
-            }
+        if ( err ) {
+            console.log( 'There was a problem adding the post to the database.' );
+            return res.status( 500 );
+        }
 
-            res.status( 201 );
-            console.log( 'Added a post' );
+        res.status( 201 );
+        console.log( 'Added a post' );
     } );
 
     res.redirect( '/' );

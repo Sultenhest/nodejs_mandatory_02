@@ -4,8 +4,8 @@ function createDeck( data ) {
     } );
 };
 
-function cardNoBody( element) {
-    var html = '<div class="card fadeInUp pointer" data-id="' + element._id + '">';
+function cardNoBody( element ) {
+    var html = '<div class="card fadeInUp pointer clickable" data-id="' + element._id + '">';
             html += '<div class="card-header">';
                 html += '<i class="fa fa-angle-right fa-3x" aria-hidden="true"></i>';
                 html += '<h3>' + element.title + '</h3>';
@@ -19,7 +19,7 @@ function cardWithBody( element ) {
     var html = '<div class="card">';
         html += '<div class="card-header">';
             html += '<h3>' + element.title + '</h3>';
-            if( element._id != null ) {
+            if ( element._id != null ) {
                 html += '<p class="secondary">' + dateFromObjectId( element._id ) + '</p>';
             }
         html += '</div>';
@@ -28,7 +28,7 @@ function cardWithBody( element ) {
             html += '<p>' + element.body + '</p>';
         html += '</div>';
 
-        if( element._id != null ) {
+        if ( element._id != null ) {
             html += '<div class="card-footer">';
                 html += '<a href="/form?id=' + element._id + '&type=update" class="btn btn-success">Edit</a>';
                 html += '<a href="/form?id=' + element._id + '&type=delete" class="btn btn-danger">Delete</a>';

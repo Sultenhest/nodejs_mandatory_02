@@ -13,3 +13,15 @@ function getUrlParameter(sParam) {
         }
     }
 }
+
+function initMap() {
+    var kea    = {
+        lat: 55.70394599999999,
+        lng: 12.53749300000004 };
+    var map    = new google.maps.Map( document.getElementById( 'map' ), {
+        zoom:   10,
+        center: kea } );
+    var marker = new google.maps.Marker( {
+        position: kea,
+        map:      map } );
+}

@@ -275,40 +275,26 @@ small {
         margin: 0; }
       @media (max-width: 640px) {
         #container .row .col, #container .row .col-100, #container .row .col-75, #container .row .col-66, #container .row .col-50, #container .row .col-33, #container .row .col-25 {
-          -ms-flex-preferred-size: 100% !important;
-              flex-basis: 100% !important;
           width: 100% !important;
           max-width: 100% !important; }
           #container .row .col:not(:last-child), #container .row .col-100:not(:last-child), #container .row .col-75:not(:last-child), #container .row .col-66:not(:last-child), #container .row .col-50:not(:last-child), #container .row .col-33:not(:last-child), #container .row .col-25:not(:last-child) {
             margin: 0 0 1rem 0; } }
     #container .row .col-100 {
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
       width: 100%;
       max-width: 100%; }
     #container .row .col-75 {
-      -ms-flex-preferred-size: 75%;
-          flex-basis: 75%;
       width: 75%;
       max-width: 75%; }
     #container .row .col-66 {
-      -ms-flex-preferred-size: 66%;
-          flex-basis: 66%;
       width: 66%;
       max-width: 66%; }
     #container .row .col-50 {
-      -ms-flex-preferred-size: 50%;
-          flex-basis: 50%;
       width: 50%;
       max-width: 50%; }
     #container .row .col-33 {
-      -ms-flex-preferred-size: 33%;
-          flex-basis: 33%;
       width: 33%;
       max-width: 33%; }
     #container .row .col-25 {
-      -ms-flex-preferred-size: 25%;
-          flex-basis: 25%;
       width: 25%;
       max-width: 25%; }
 

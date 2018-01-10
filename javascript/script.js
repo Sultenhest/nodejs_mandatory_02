@@ -9,7 +9,7 @@ $( function() {
         fetchingElement  = { 'title': 'Fetching Data',
                              'body':  '<img src="imgs/loader.gif" alt="Loading..." id="loader">' },
         noResultsElement = { 'title': 'No results.',
-                             'body':  'Sorry, but we couldn\'t find anything matching the search string.<br>Press the X or type something else.' };
+                             'body':  'Sorry, but we couldn\'t find anything matching the search string.<br>Press the <i class="fa fa-times" aria-hidden="true"></i> or type something else.' };
 
     if ( pathName === '/' ) {
         $.getJSON( rootURL + '/posts/', function ( data ) {
@@ -55,7 +55,7 @@ $( function() {
         $( '#form' ).show();
     }
 
-    $( '#main-deck' ).on( 'click', '.card', function () {
+    $( '#main-deck' ).on( 'click', '.clickable', function () {
         var postId  = $( this ).attr( 'data-id' );
 
         $( '.modal' ).empty().append( cardWithBody( fetchingElement ) );
@@ -76,6 +76,16 @@ $( function() {
         $( '#clear-search-field' ).removeClass( 'disabled' );
         $( '#main-deck' ).empty();
 
+        jsonData.forEach( function ( element ) {
+            if ( element.title.toLowerCase().indexOf( searchInput ) >= 0 ) {
+                $( '#main-deck' ).append( cardNoBody( element ) );
+            }
+        } );
+
+        if ( $( '#main-deck' ).is( ':empty' ) ) {
+            $( '#main-deck' ).append( cardWithBody( noResultsElement ) );
+        }
+
         $( '#clear-search-field' ).click( function() {
             $( this ).addClass( 'disabled' );
             $( '#search-field' ).val( '' );
@@ -85,16 +95,6 @@ $( function() {
 
         if ( searchInput == '' ) {
             $( '#clear-search-field' ).addClass( 'disabled' );
-        }
-
-        jsonData.forEach( function ( element ) {
-            if ( element.title.toLowerCase().indexOf( searchInput ) >= 0 ) {
-                $( '#main-deck' ).append( cardNoBody( element ) );
-            }
-        } );
-
-        if ( $( '#main-deck' ).is( ':empty' ) ) {
-            $( '#main-deck' ).append( cardWithBody( noResultsElement ) );
         }
     } );
 } );

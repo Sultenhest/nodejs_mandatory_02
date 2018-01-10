@@ -13,14 +13,26 @@ function getUrlParameter(sParam) {
         }
     }
 }
+
+function initMap() {
+    var kea    = {
+        lat: 55.70394599999999,
+        lng: 12.53749300000004 };
+    var map    = new google.maps.Map( document.getElementById( 'map' ), {
+        zoom:   10,
+        center: kea } );
+    var marker = new google.maps.Marker( {
+        position: kea,
+        map:      map } );
+}
 function createDeck( data ) {
     data.forEach( function ( element ) {
         $( '#main-deck' ).append( cardNoBody( element ) );
     } );
 };
 
-function cardNoBody( element) {
-    var html = '<div class="card fadeInUp pointer" data-id="' + element._id + '">';
+function cardNoBody( element ) {
+    var html = '<div class="card fadeInUp pointer clickable" data-id="' + element._id + '">';
             html += '<div class="card-header">';
                 html += '<i class="fa fa-angle-right fa-3x" aria-hidden="true"></i>';
                 html += '<h3>' + element.title + '</h3>';
@@ -34,7 +46,7 @@ function cardWithBody( element ) {
     var html = '<div class="card">';
         html += '<div class="card-header">';
             html += '<h3>' + element.title + '</h3>';
-            if( element._id != null ) {
+            if ( element._id != null ) {
                 html += '<p class="secondary">' + dateFromObjectId( element._id ) + '</p>';
             }
         html += '</div>';
@@ -43,7 +55,7 @@ function cardWithBody( element ) {
             html += '<p>' + element.body + '</p>';
         html += '</div>';
 
-        if( element._id != null ) {
+        if ( element._id != null ) {
             html += '<div class="card-footer">';
                 html += '<a href="/form?id=' + element._id + '&type=update" class="btn btn-success">Edit</a>';
                 html += '<a href="/form?id=' + element._id + '&type=delete" class="btn btn-danger">Delete</a>';
@@ -87,7 +99,7 @@ $( function() {
         fetchingElement  = { 'title': 'Fetching Data',
                              'body':  '<img src="imgs/loader.gif" alt="Loading..." id="loader">' },
         noResultsElement = { 'title': 'No results.',
-                             'body':  'Sorry, but we couldn\'t find anything matching the search string.<br>Press the X or type something else.' };
+                             'body':  'Sorry, but we couldn\'t find anything matching the search string.<br>Press the <i class="fa fa-times" aria-hidden="true"></i> or type something else.' };
 
     if ( pathName === '/' ) {
         $.getJSON( rootURL + '/posts/', function ( data ) {
@@ -133,7 +145,7 @@ $( function() {
         $( '#form' ).show();
     }
 
-    $( '#main-deck' ).on( 'click', '.card', function () {
+    $( '#main-deck' ).on( 'click', '.clickable', function () {
         var postId  = $( this ).attr( 'data-id' );
 
         $( '.modal' ).empty().append( cardWithBody( fetchingElement ) );
@@ -154,6 +166,16 @@ $( function() {
         $( '#clear-search-field' ).removeClass( 'disabled' );
         $( '#main-deck' ).empty();
 
+        jsonData.forEach( function ( element ) {
+            if ( element.title.toLowerCase().indexOf( searchInput ) >= 0 ) {
+                $( '#main-deck' ).append( cardNoBody( element ) );
+            }
+        } );
+
+        if ( $( '#main-deck' ).is( ':empty' ) ) {
+            $( '#main-deck' ).append( cardWithBody( noResultsElement ) );
+        }
+
         $( '#clear-search-field' ).click( function() {
             $( this ).addClass( 'disabled' );
             $( '#search-field' ).val( '' );
@@ -163,16 +185,6 @@ $( function() {
 
         if ( searchInput == '' ) {
             $( '#clear-search-field' ).addClass( 'disabled' );
-        }
-
-        jsonData.forEach( function ( element ) {
-            if ( element.title.toLowerCase().indexOf( searchInput ) >= 0 ) {
-                $( '#main-deck' ).append( cardNoBody( element ) );
-            }
-        } );
-
-        if ( $( '#main-deck' ).is( ':empty' ) ) {
-            $( '#main-deck' ).append( cardWithBody( noResultsElement ) );
         }
     } );
 } );
