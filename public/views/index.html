@@ -11,6 +11,14 @@
     <link href="../css/style.min.css" rel="stylesheet">
 </head>
 <body>
+    <nav class="nav text-uppercase">
+        <div class="nav-items">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/contact" class="nav-item">Contact</a>
+        </div>
+    </nav>
+
     <div id="container">
         <form id="search-form" class="row">
             <div class="col form-control has-icon">
@@ -25,7 +33,9 @@
         <div class="row">
             <main class="col-66">
                 <div class="card">
-                    <img src="imgs/loader.gif" alt="Loading..." id="loader">
+                    <div class="card-header">
+                        <img src="imgs/loader.gif" alt="Loading..." id="loader">
+                    </div>
                 </div>
 
                 <div id="main-deck" class="is-deck"></div>
@@ -39,12 +49,17 @@
                     </div>
 
                     <div class="card-body">
-                        <a href="/posts/" class="btn btn-primary btn-full">
-                            JSON
+                        <a href="/form" class="btn btn-primary btn-full">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            Add a Post
                         </a>
                         <a href="https://github.com/Sultenhest/nodejs_mandatory_02" class="btn btn-success btn-full" target="_blank">
                             <i class="fa fa-github" aria-hidden="true"></i>
-                            GitHub
+                            GitHub Repository
+                        </a>
+                        <a href="/posts/" class="btn btn-warning btn-full">
+                            <i class="fa fa-file-o" aria-hidden="true"></i>
+                            Posts JSON
                         </a>
                     </div>
                 </div>
@@ -67,7 +82,7 @@
     </div>
 
     <div id="modal-overlay">
-        <i class="modal-close fa fa-times fa-3x" aria-hidden="true"></i>
+        <i class="modal-close pointer fa fa-times fa-3x" aria-hidden="true"></i>
         <div class="modal"></div>
     </div>
 

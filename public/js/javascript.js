@@ -58,8 +58,15 @@ function cardWithBody( element ) {
 
         if ( element._id != null ) {
             html += '<div class="card-footer">';
-                html += '<a href="/form?id=' + element._id + '&type=update" class="btn btn-success">Edit</a>';
-                html += '<a href="/form?id=' + element._id + '&type=delete" class="btn btn-danger">Delete</a>';
+                html += '<a href="/form?id=' + element._id + '&type=update" class="btn btn-success">';
+                    html += '<i class="fa fa-pencil" aria-hidden="true"></i> Edit';
+                html += '</a>';
+                html += '<a href="/posts/' + element._id + '" class="btn btn-warning">';
+                    html += '<i class="fa fa-file-o" aria-hidden="true"></i> JSON';
+                html += '</a>';
+                html += '<a href="/form?id=' + element._id + '&type=delete" class="btn btn-danger">';
+                    html += '<i class="fa fa-trash-o" aria-hidden="true"></i> Delete';
+                html += '</a>';
             html += '</div>';
         }
     html += '</div>';
@@ -117,12 +124,15 @@ $( function() {
 
         if ( type === 'update' ) {
             $( '#form-header' ).prepend( 'Update ' );
+            $( '#form-sub-header' ).text( 'Update the following post' );
             $( '#form' ).attr('action', '/posts/' + id + '?_method=put');
         } else if ( type === 'delete' ) {
             $( '#form-header' ).prepend( 'Delete ' );
+            $( '#form-sub-header' ).text( 'Are you sure you want to delete the following post?' );
             $( '#form' ).attr('action', '/posts/' + id + '?_method=delete');
         } else {
             $( '#form-header' ).prepend( 'Create ' );
+            $( '#form-sub-header' ).text( 'Create a new post' );
             $( '#form' ).attr('action', '/posts');
         }
 

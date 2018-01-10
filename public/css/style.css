@@ -159,6 +159,11 @@ small {
     color: #ffffff; }
     .btn.btn-success:hover, .btn.btn-success:active, .btn.btn-success:focus {
       background-color: #40d47e; }
+  .btn.btn-warning {
+    background-color: #f1c40f;
+    color: #ffffff; }
+    .btn.btn-warning:hover, .btn.btn-warning:active, .btn.btn-warning:focus {
+      background-color: #f2ca27; }
   .btn.btn-danger {
     background-color: #e74c3c;
     color: #ffffff; }
@@ -194,7 +199,7 @@ small {
   .card .card-header {
     background-color: #ffffff;
     padding: 1.5rem; }
-    .card .card-header .fa {
+    .card .card-header .fa-angle-right {
       position: absolute;
       right: 20px;
       top: 50%;
@@ -243,13 +248,10 @@ small {
 #container {
   width: 100%;
   margin: 0 auto;
-  padding: 3rem 1rem; }
+  padding: 4rem 1rem; }
   @media (min-width: 1170px) {
     #container {
       max-width: 1138px; } }
-  @media (max-width: 1170px) {
-    #container {
-      padding: 1rem; } }
   #container .row {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -309,6 +311,7 @@ ol, ul {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   display: none;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.75); }
@@ -321,6 +324,35 @@ ol, ul {
     width: 500px;
     max-width: 80%;
     margin: 5rem auto; }
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
+  .nav .nav-items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around; }
+    .nav .nav-items .nav-item {
+      display: block;
+      padding: 0.75rem 1rem; }
+      .nav .nav-items .nav-item:hover, .nav .nav-items .nav-item:active, .nav .nav-items .nav-item:focus {
+        padding: 0.75rem 1rem 0.5rem;
+        border-bottom: 0.25rem solid #e74c3c;
+        text-decoration: none; }
 
 *,
 *::before,

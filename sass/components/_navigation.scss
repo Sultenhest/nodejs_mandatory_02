@@ -1,0 +1,27 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    background-color: rgba( 255, 255, 255, 0.8 );
+    box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
+
+    .nav-items {
+        display: flex;
+        justify-content: space-around;
+
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1rem;
+
+            &:hover, &:active, &:focus {
+                padding: 0.75rem 1rem 0.5rem;
+                border-bottom: 0.25rem solid $dangerColor;
+                text-decoration: none;
+            }
+        }
+    }
+}

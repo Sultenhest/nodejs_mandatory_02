@@ -1,14 +1,10 @@
 #container {
     width: 100%;
     margin: 0 auto;
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
 
     @media ( min-width: $lg ) {
         max-width: $lg - 32px;
-    }
-
-    @media (max-width: $lg) {
-        padding: 1rem;
     }
 
     .row {

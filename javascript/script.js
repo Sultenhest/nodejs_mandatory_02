@@ -26,12 +26,15 @@ $( function() {
 
         if ( type === 'update' ) {
             $( '#form-header' ).prepend( 'Update ' );
+            $( '#form-sub-header' ).text( 'Update the following post' );
             $( '#form' ).attr('action', '/posts/' + id + '?_method=put');
         } else if ( type === 'delete' ) {
             $( '#form-header' ).prepend( 'Delete ' );
+            $( '#form-sub-header' ).text( 'Are you sure you want to delete the following post?' );
             $( '#form' ).attr('action', '/posts/' + id + '?_method=delete');
         } else {
             $( '#form-header' ).prepend( 'Create ' );
+            $( '#form-sub-header' ).text( 'Create a new post' );
             $( '#form' ).attr('action', '/posts');
         }
 

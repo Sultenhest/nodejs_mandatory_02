@@ -11,6 +11,14 @@
     <link href="../css/style.min.css" rel="stylesheet">
 </head>
 <body>
+    <nav class="nav text-uppercase">
+        <div class="nav-items">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/contact" class="nav-item">Contact</a>
+        </div>
+    </nav>
+    
     <div id="container">
         <div class="row">
             <main class="col-66">
@@ -19,11 +27,27 @@
 
                     <div class="card-header">
                         <h3>Contact</h3>
-                        <p class="secondary">You could add some text here..</p>
+                        <p class="secondary">Contact us if you got something to tell us</p>
                     </div>
 
                     <div class="card-body">
-                        <p>This is the contact page.</p>
+                        <p class="secondary">NOTE: The form doesn't actually do anything.</p>
+
+                        <form method="" action="">
+                            <div class="form-control">
+                                <input type="text" id="name" class="control-field" name="name" placeholder="Name" required>
+                            </div>
+
+                            <div class="form-control">
+                                <input type="text" id="email" class="control-field" name="email" placeholder="Email" required>
+                            </div>
+
+                            <div class="form-control">
+                                <textarea id="message" class="control-field" name="message" placeholder="Message" rows="10" required></textarea>
+                            </div>
+
+                            <input type="submit" id="submit" class="btn btn-primary" value="Submit">
+                        </form>
                     </div>
                 </div>
             </main>
@@ -36,19 +60,24 @@
                     </div>
 
                     <div class="card-body">
-                        <a href="/posts/" class="btn btn-primary btn-full">
-                            JSON
+                        <a href="/form" class="btn btn-primary btn-full">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            Add a Post
                         </a>
                         <a href="https://github.com/Sultenhest/nodejs_mandatory_02" class="btn btn-success btn-full" target="_blank">
                             <i class="fa fa-github" aria-hidden="true"></i>
-                            GitHub
+                            GitHub Repository
+                        </a>
+                        <a href="/posts/" class="btn btn-warning btn-full">
+                            <i class="fa fa-file-o" aria-hidden="true"></i>
+                            Posts JSON
                         </a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Sidebar 2</h3>
+                        <h3>Menu</h3>
                     </div>
 
                     <div class="card-body">
