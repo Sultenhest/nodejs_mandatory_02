@@ -14,6 +14,7 @@ function getUrlParameter(sParam) {
     }
 }
 
+// https://developers.google.com/maps/documentation/javascript/adding-a-google-map
 function initMap() {
     var kea    = {
         lat: 55.70394599999999,

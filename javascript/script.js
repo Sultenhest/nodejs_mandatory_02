@@ -1,6 +1,4 @@
 $( function() {
-    'use strict';
-
     var rootURL          = window.location.protocol + '//' + window.location.host,
         pathName         = top.location.pathname,
         jsonData         = '',
