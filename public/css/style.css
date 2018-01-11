@@ -353,6 +353,11 @@ ol, ul {
         padding: 0.75rem 1rem 0.5rem;
         border-bottom: 0.25rem solid #e74c3c;
         text-decoration: none; }
+      .nav .nav-items .nav-item.active {
+        color: rgba(0, 0, 0, 0.54);
+        padding: 0.75rem 1rem 0.5rem;
+        border-bottom: 0.25rem solid #e74c3c;
+        text-decoration: none; }
 
 *,
 *::before,
