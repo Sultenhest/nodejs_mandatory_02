@@ -8,8 +8,8 @@ app.use( express.static( 'public' ) );
 /********************
  * API POST ROUTES
  *******************/
-var PostsController = require( './controllers/PostsController' );
-app.use( '/posts', PostsController );
+var postsController = require( './controllers/PostsController' );
+app.use( '/posts', postsController );
 
 /********************
  * PAGE ROUTES
